@@ -5,10 +5,11 @@ var enemy3 = "Robo Trumble";
 var playerName = window.prompt("What is your robot's name?");
 var playerHealth = 100;
 var playerAttack = 10;
-var playerMoney = 10;
+//change playerMoney
+var playerMoney = 20;
 // change enemyHealth back reminder
 var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
-var enemyHealth = 10;
+var enemyHealth = 15;
 var enemyAttack = 12;
 
 //---------------variables-----------------//
@@ -37,7 +38,7 @@ var fight = function(enemyName) {
                 window.alert(enemyNames[i] + " has died!");
                 break;
             }   
-            else {
+        else {
                 window.alert(enemyNames[i] + " still has " + enemyHealth + " health left.");
             }
         
@@ -58,7 +59,7 @@ var fight = function(enemyName) {
      
         } 
     }
-    else if (promptFight === "skip" || promptFight === "SKIP") {
+        else if (promptFight === "skip" || promptFight === "SKIP") {
         //confirm player wants to skip
         var confirmSkip = window.confirm("Are you sure you'd like to quit?");
 
@@ -68,23 +69,23 @@ var fight = function(enemyName) {
 
             //subtract money from playerMoney for skipping
             playerMoney = playerMoney - 10;
-            console.log("playerMoney", playerMoney);
+                console.log("playerMoney", playerMoney);
+                break;
         }
-
+    
         //if no (false), ask question again by running fight() again.
-        else {
-            fight();
-        } 
-    }   
+        else fight();
+        }   
         else {
         window.alert("You need to choose a valid option. Try again!");
         }
     }
 }
-   
+
+//change enemy health reminder
 for(var i = 0; i < enemyNames.length; i++) {
     var pickedEnemyName = enemyNames[i];
-    enemyHealth = 50;
+    enemyHealth = 15;
     fight(pickedEnemyName);   
 }
     
