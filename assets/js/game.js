@@ -9,7 +9,7 @@ var playerAttack = 10;
 var playerMoney = 20;
 // change enemyHealth back reminder
 var enemyNames = ["Roborto", "Amy Android", "Robo Trumble"];
-var enemyHealth = 15;
+var enemyHealth = 50;
 var enemyAttack = 12;
 
 //---------------variables-----------------//
@@ -85,7 +85,7 @@ var fight = function(enemyName) {
 //change enemy health reminder
 for(var i = 0; i < enemyNames.length; i++) {
     var pickedEnemyName = enemyNames[i];
-    enemyHealth = 15;
+    enemyHealth = 50;
     fight(pickedEnemyName);   
 }
     
