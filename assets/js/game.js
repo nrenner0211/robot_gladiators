@@ -41,12 +41,23 @@ var fightOrSkip = function() {
 }
 // fight function (now with parameter for enemy's name) 
 var fight = function(enemy) {
+
+  //keep track of who goes first
+  var isPlayerTurn = true;
+
+  //randomly change turn order
+  if (Math.random() > 0.5) {
+    isPlayerTurn = false;
+  }
+
     while (playerInfo.health > 0 && enemy.health > 0) {
-      //ask player if they'd like to fight or skip
-      if (fightOrSkip()) {
-        //if true, leave fight by breaking loop
-        break;
-      }        
+      if (isPlayerTurn) {
+        //ask player if they'd like to fight or skip
+        if (fightOrSkip()) {
+          //if true, leave fight by breaking loop
+          break;
+        }  
+      }      
       // generate random damage value based on player's attack power
       var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
 
@@ -68,23 +79,23 @@ var fight = function(enemy) {
         window.alert(enemy.name + ' still has ' + enemy.health + ' health left.');
       }
   
-      // generate random damage value
-      var damage = randomNumber(enemy.attack - 3, enemy.attack);
+        // generate random damage value
+        var damage = randomNumber(enemy.attack - 3, enemy.attack);
 
-      playerInfo.health = Math.max(0, playerInfo.health - damage);
-
-      console.log(
-        enemy.name + ' attacked ' + playerInfo.name + '. ' +playerInfo.name  + ' now has ' + playerInfo.health + ' health remaining.'
-      );
+        playerInfo.health = Math.max(0, playerInfo.health - damage);
+          console.log(
+            enemy.name + ' attacked ' + playerInfo.name + '. ' +playerInfo.name  + ' now has ' + playerInfo.health + ' health remaining.'
+          );
   
-      // check player's health
-      if (playerInfo.health <= 0) {
-        window.alert(playerInfo.name + ' has died!');
-        // leave while() loop if player is dead
-        break;
-      } else {
-        window.alert(playerInfo.name + ' still has ' + playerInfo.health + ' health left.');
+        // check player's health
+        if (playerInfo.health <= 0) {
+          window.alert(playerInfo.name + ' has died!');
+          // leave while() loop if player is dead
+          break;
+        } else {
+            window.alert(playerInfo.name + ' still has ' + playerInfo.health + ' health left.');
       }
+      isPlayerTurn =!isPlayerTurn;
     } // end of while loop
 }; // end of fight function
 
